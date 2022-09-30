@@ -3,5 +3,5 @@ A stock market based discord bot
 
 -----
 # Contributors
-Nolan Amblard
+Nolan Amblard 
 Brian Goldblatt
