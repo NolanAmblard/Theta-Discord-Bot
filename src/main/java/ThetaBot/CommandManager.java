@@ -15,6 +15,7 @@ public class CommandManager {
     CommandManager() {
         addCommand(new Fiesta());
         addCommand(new Ping());
+        addCommand(new Echo());
     }
 
     private void addCommand(Command command) {
