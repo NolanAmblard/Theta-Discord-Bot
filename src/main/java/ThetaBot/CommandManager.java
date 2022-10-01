@@ -1,5 +1,6 @@
 package ThetaBot;
 
+import Commands.Fiesta;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Arrays;
@@ -12,6 +13,7 @@ public class CommandManager {
     private final Map<String, Command> commands = new HashMap<String, Command>();
 
     CommandManager() {
+        addCommand(new Fiesta());
     }
 
     private void addCommand(Command command) {
