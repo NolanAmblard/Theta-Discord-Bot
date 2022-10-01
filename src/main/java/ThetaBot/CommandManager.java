@@ -1,6 +1,6 @@
 package ThetaBot;
 
-import Commands.Fiesta;
+import Commands.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Arrays;
@@ -14,6 +14,7 @@ public class CommandManager {
 
     CommandManager() {
         addCommand(new Fiesta());
+        addCommand(new Ping());
     }
 
     private void addCommand(Command command) {
