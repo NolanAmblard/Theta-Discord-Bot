@@ -12,7 +12,7 @@ import javax.security.auth.login.LoginException;
 
 public class Theta extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
-        String token = "MTAyNTUyMzk2OTQ1MDg1MjM5Mg.GnACtg.SEMe-r5ISWcmNZyNmBm8Ut_P9aEKp_0-w8Oe50";
+        String token = "insert token";
 
         CommandManager commandManager = new CommandManager();
 
