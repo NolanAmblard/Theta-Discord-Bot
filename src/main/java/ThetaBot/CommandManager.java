@@ -1,6 +1,7 @@
 package ThetaBot;
 
 import Commands.*;
+import TickerInfo.ParseTickerCsv;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 import java.util.Arrays;
@@ -11,10 +12,15 @@ import java.util.regex.Pattern;
 
 public class CommandManager {
     private final Map<String, Command> commands = new HashMap<String, Command>();
+    private static ParseTickerCsv parsedTickers;
 
     CommandManager() {
+        parsedTickers = new ParseTickerCsv();
+
         addCommand(new Fiesta());
         addCommand(new Ping());
+        addCommand(new Echo());
+        addCommand(new TickerSearch(parsedTickers));
     }
 
     private void addCommand(Command command) {
@@ -37,5 +43,9 @@ public class CommandManager {
 
             commands.get(keyword).execute(args, event);
         }
+    }
+
+    public ParseTickerCsv getParsedTickers() {
+        return parsedTickers;
     }
 }
