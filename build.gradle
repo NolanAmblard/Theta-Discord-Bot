@@ -15,6 +15,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
     implementation 'net.dv8tion:JDA:5.0.0-alpha.9'
     implementation 'com.opencsv:opencsv:5.7.0'
+    implementation group: 'com.yahoofinance-api', name: 'YahooFinanceAPI', version: '3.15.0'
 }
 
 test {

@@ -5,6 +5,8 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
+import java.io.IOException;
+
 public class Listener extends ListenerAdapter {
 
     private final CommandManager cm;
@@ -25,7 +27,11 @@ public class Listener extends ListenerAdapter {
 
         //If the user who sent the message is not a bot and the beginning of the message begins with the correct prefix, then run the command
         if (!event.getAuthor().isBot() && content.startsWith("!")) {
-            cm.runCommand(event);
+            try {
+                cm.runCommand(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
