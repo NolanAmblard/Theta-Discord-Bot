@@ -28,7 +28,7 @@ public class TickerSearch implements Command {
             catch (Exception NumberFormatException) { }
             finally {
                 if (numResults != -1) {
-                    List<String> resultingTickers = parsedTickers.tickerTree.findTopN(message[1], numResults);
+                    List<String> resultingTickers = parsedTickers.tickerTree.findTopN(message[1].toUpperCase(), numResults);
                     sendTickerMessage(resultingTickers, event);
                 } else {
                     event.getChannel().sendMessage("Please enter a valid number of results (0 <= N <= 10)").queue();
@@ -36,7 +36,7 @@ public class TickerSearch implements Command {
             }
         } else {
             // Get the 5 top tickers for input
-            List<String> resultingTickers = parsedTickers.tickerTree.findTopN(message[1], 5);
+            List<String> resultingTickers = parsedTickers.tickerTree.findTopN(message[1].toUpperCase(), 5);
             sendTickerMessage(resultingTickers, event);
         }
     }
@@ -44,9 +44,18 @@ public class TickerSearch implements Command {
     private void sendTickerMessage(List<String> tickers, MessageReceivedEvent event) {
         String output = "No tickers found";
         for (String ticker : tickers) {
-            if (output.equals("No tickers found")) output = ticker;
-            else output += ", " + ticker;
+            if (output.equals("No tickers found")) {
+                output = ticker;
+            } else{
+                output += ", " + ticker;
+            }
         }
+
+        try {
+            int splitIndex = output.indexOf(',');
+            output = output.substring(0, splitIndex) + " \nRelevant tickers:" + output.substring(splitIndex + 1);
+        }
+        catch (Exception StringIndexOutOfBoundsException) { }
         event.getChannel().sendMessage(output).queue();
     }
 
