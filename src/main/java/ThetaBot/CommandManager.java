@@ -4,6 +4,7 @@ import Commands.*;
 import TickerInfo.ParseTickerCsv;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,7 @@ public class CommandManager {
         addCommand(new Ping());
         addCommand(new Echo());
         addCommand(new TickerSearch(parsedTickers));
+        addCommand(new TickerPrice(parsedTickers));
     }
 
     private void addCommand(Command command) {
@@ -29,7 +31,7 @@ public class CommandManager {
         }
     }
 
-    void runCommand(MessageReceivedEvent event) {
+    void runCommand(MessageReceivedEvent event) throws IOException {
         String prefix = "!";
 
         String[] split = event.getMessage().getContentRaw().replaceFirst("(?i)" + Pattern.quote(prefix), "").split("\\s+");
