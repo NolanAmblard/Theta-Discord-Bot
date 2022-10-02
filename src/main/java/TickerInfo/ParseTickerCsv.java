@@ -50,7 +50,7 @@ public class ParseTickerCsv {
         }
     }
 
-    class TreeNode {
+    public class TreeNode {
         public boolean isTicker;
         public long marketCap;
         public Map<String, Long> freq;
@@ -87,7 +87,7 @@ public class ParseTickerCsv {
             }
         }
 
-        private TreeNode searchNode(@NotNull String input) {
+        public TreeNode searchNode(@NotNull String input) {
             TreeNode curr = root;
             int i = 0;
 
@@ -121,6 +121,10 @@ public class ParseTickerCsv {
 
             while (!pqueue.isEmpty()) {
                 result.add(0, pqueue.poll().ticker);
+            }
+
+            if (node.isTicker) {
+                result.add(0, "Matching ticker: " + input);
             }
 
             return result;
